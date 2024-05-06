@@ -53,13 +53,24 @@ function pickPerson() {
   return pickedPerson;
 }
 
+
+// Checks whether we got the OK from fetch request -- if not, throw error
 function validateResponse(res) {
+  // if response is valid, return to previous code
   if (res.ok) return res
-  switch (res.status) {
-    case 404:
-      throw "Not found";
-    case 503:
-      throw "Server is down";
+  
+  // just for fun
+  if(res.status === 418){
+    throw "Found a teapot";
+  }
+  
+  // else if there's an error, throw relevant error
+  let statusPrefix = Number(String(res.status).slice(0,1));
+  switch (statusPrefix) {
+    case 4:
+      throw `Client Error: ${res.status}`;
+    case 5:
+      throw `Server Error: ${res.status}`
     default:
       throw "Some unknown error"
   }
