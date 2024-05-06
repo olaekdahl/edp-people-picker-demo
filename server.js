@@ -1,6 +1,7 @@
 import express from 'express';
-//const express = require('express');
 //import database from './database.json';
+
+// Static test data
 const database = {
   "people": [
     {
@@ -34,6 +35,7 @@ const app = express();
 
 process.loadEnvFile();
 const port = process.env.PORT || 3000;
+
 
 app.get('/api/allPeople', (req, res) => {
   res.send(people);
