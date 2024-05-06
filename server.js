@@ -1,44 +1,22 @@
 import express from 'express';
-//import database from './database.json';
+//import db from './database.json' assert {type: 'json'};
+import fs from 'fs';
 
-// Static test data
-const database = {
-  "people": [
-    {
-      "first": "Alex",
-      "last": "Ouyang",
-      "age": 22,
-      "email": "alex@google.com"
-    },
-    {
-      "first": "Jorge",
-      "last": "Pezo",
-      "age": 25,
-      "email": "jorge@google.com"
-    },
-    {
-      "first": "Enock",
-      "last": "Omweno",
-      "age": 24,
-      "email": "enock@google.com"
-    },
-    {
-      "first": "Mae",
-      "last": "Rodriguez",
-      "age": 23,
-      "email": "mae@google.com"
-    }
-  ]
+let db;
+try {
+  db = JSON.parse(fs.readFileSync('./database.json'));
+} catch (error) {
+  console.error("Couldn't read database", error)
+  throw (error);
 }
-console.log(database);
+
 const app = express();
 
 process.loadEnvFile();
 const port = process.env.PORT || 3000;
 
-
 app.get('/api/allPeople', (req, res) => {
-  res.send(people);
+  res.send(db.people);
 });
 app.use(express.static("web-app"));
 
