@@ -6,6 +6,7 @@ const app = express();
 process.loadEnvFile();
 const port = process.env.PORT || 3000;
 
+// Static test data
 const p1 = {
   first: "Alex",
   last: "Ouyang",
