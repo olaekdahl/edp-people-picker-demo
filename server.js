@@ -36,7 +36,7 @@ const app = express();
 process.loadEnvFile();
 const port = process.env.PORT || 3000;
 
-
+// API route
 app.get('/api/allPeople', (req, res) => {
   res.send(people);
 });
