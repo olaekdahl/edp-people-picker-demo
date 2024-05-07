@@ -21,6 +21,10 @@ resetPeopleButton.addEventListener('click', async () => {
 
 pickRandomPersonButton.addEventListener('click', () => {
   console.log('clicked')
+  if (unpickedPeople.length === 0) {
+    console.warn("No one else to pick. Exiting")
+    return;
+  }
   pickedPerson = pickPerson();
   renderPeople();
 })
@@ -35,37 +39,25 @@ function drawAPerson(person) {
   return `<p>${person?.first}</p>`
 }
 function pickPerson() {
-  // Add the current picked person to the pickedPeople list
   pickedPeople.push(pickedPerson);
-
-  // Check if there are any unpicked people left
-  if (unpickedPeople.length === 0) {
-    return; // No more people to pick, so exit the function
-  }
-
-  // Get a random index within the unpickedPeople list
   const randomIndex = Math.floor(Math.random() * unpickedPeople.length);
-
-  // Pick the person at the random index
-  pickedPerson = unpickedPeople.splice(randomIndex, 1)[0];
-
-  // Remove the picked person from the unpickedPeople list (splice returns an array with the removed element)
+  pickedPerson = unpickedPeople[randomIndex]
+  unpickedPeople = unpickedPeople.filter(p => p !== pickedPerson);
   return pickedPerson;
 }
-
 
 // Checks whether we got the OK from fetch request -- if not, throw error
 function validateResponse(res) {
   // if response is valid, return to previous code
   if (res.ok) return res
-  
+
   // just for fun
-  if(res.status === 418){
+  if (res.status === 418) {
     throw "Found a teapot";
   }
-  
+
   // else if there's an error, throw relevant error
-  let statusPrefix = Number(String(res.status).slice(0,1));
+  let statusPrefix = Number(String(res.status).slice(0, 1));
   switch (statusPrefix) {
     case 4:
       throw `Client Error: ${res.status}`;
