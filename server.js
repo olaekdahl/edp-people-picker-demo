@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 //import db from './database.json' assert {type: 'json'};
 import fs from 'fs';
 
@@ -11,7 +12,7 @@ try {
 }
 
 const app = express();
-
+app.use(cors());
 process.loadEnvFile();
 const port = process.env.PORT || 3000;
 
