@@ -1,0 +1,4 @@
+/* Bootstrap customizations */
+:root {
+  --bs-card-inner-border-radius: 20px;
+}
