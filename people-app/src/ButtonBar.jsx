@@ -6,3 +6,4 @@ export function ButtonBar({ reset, pickRandomPerson }) {
     <button onClick={pickRandomPerson}>Pick Random Person</button>
   </section>
 }
+
