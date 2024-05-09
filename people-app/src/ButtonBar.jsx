@@ -1,13 +1,8 @@
+/* eslint-disable react/prop-types */
 
-/*
-1. FUNCTION that ...
-2. Is named with a CAPITAL letter ...
-3. And returns JSX.
-*/
-
-export function ButtonBar() {
+export function ButtonBar({ reset, pickRandomPerson }) {
   return <section>
-    <button>Reset</button>
-    <button>Pick Random Person</button>
+    <button onClick={reset}>Reset</button>
+    <button onClick={pickRandomPerson}>Pick Random Person</button>
   </section>
 }
