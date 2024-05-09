@@ -1,7 +1,7 @@
 {
   "people": [
     {
-      "id": 0,
+      "id": 18,
       "first": "Alex",
       "last": "Ouyang",
       "age": 22,
@@ -118,7 +118,7 @@
       "last": "Gordon-Burns",
       "age": 23,
       "email": "zach@google.com",
-      "imageUrl": "/images/Zach_Gordon_Burns.png"
+      "imageUrl": "/images/zach_gordon_burns.png"
     },
     {
       "id": 15,
@@ -134,7 +134,7 @@
       "last": "Ekdahl",
       "age": 28,
       "email": "ola@ciracon.com",
-      "imageUrl": "/images/Ola.png"
+      "imageUrl": "/images/TotalWolf.jpg"
     },
     {
       "id": 17,
@@ -142,7 +142,7 @@
       "last": "Payne",
       "age": 26,
       "email": "rap@creator.com",
-      "imageUrl": "/images/Rap.png"
+      "imageUrl": "/images/RapHeadshot900x900.jpg"
     }
   ]
 }
