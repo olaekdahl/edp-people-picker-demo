@@ -29,6 +29,6 @@ export const repo = {
     read: readPerson,
     create: createPerson,
     delete: deletePerson,
-    updatePerson: updatePerson,
-  }
+    update: updatePerson,
+  },
 }
