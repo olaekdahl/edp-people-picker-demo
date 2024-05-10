@@ -2,8 +2,8 @@
 
 export function ButtonBar({ reset, pickRandomPerson }) {
   return <section>
-    <button onClick={reset}>Reset</button>
-    <button onClick={pickRandomPerson}>Pick Random Person</button>
+    <button className="btn btn-outline-danger" onClick={reset}>Reset</button>
+    <button className="btn btn-outline-success" onClick={pickRandomPerson}>Pick Random Person</button>
   </section>
 }
 
