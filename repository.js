@@ -1,8 +1,12 @@
 import fs from 'fs';
+import { MongoClient, ObjectId } from 'mongodb';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
 let db;
 try {
-  db = JSON.parse(fs.readFileSync('./database.json'));
+  //db = JSON.parse(fs.readFileSync('./database.json'));
+  db = {};
 } catch (error) {
   console.error("Couldn't read database", error)
   throw (error);
