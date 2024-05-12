@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node --watch ./server.js",
+    "mongo": "mongod --dbpath ./data/db",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
