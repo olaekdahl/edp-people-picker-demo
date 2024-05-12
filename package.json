@@ -4,6 +4,9 @@
   "description": "Provides a list of people to choose from",
   "main": "server.js",
   "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "start": "node --watch ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
