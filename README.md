@@ -6,11 +6,26 @@ This project lists the Travelers EDP program bootcamp cohort 1 and picks a rando
 
 ### 1. Dependencies
 - Node.js
-- Express
-- Vite
+- MongoDB
 
+### Set up mongoDB
+Add these lines to a `.env` file:
+```
+PORT=3000;
+MONGO_DB_URL=mongodb://localhost:27017
+MONGO_DB=your_db_name
+MONGO_DB_COLLECTION=your_collection_name
+```
 ### 2. How to run locally
-1. **Clone this repository**
+1. Make sure mongoDB is running.
+
+Bonus: You *may* create a local folder called `db/data` and run ...
+  ```
+  npm run mongo
+  ```
+To create a **local** database. Change package.json to customize the port number.
+
+2. **Clone this repository**
     - Change into the `edp-people-picker` directory:
         ```
         $ cd edp-people-picker
@@ -25,7 +40,7 @@ This project lists the Travelers EDP program bootcamp cohort 1 and picks a rando
         $ npm install
         ```
 
-2. **Start the server**
+3. **Start the server**
     - Make sure you are back in the `edp-people-picker` directory:
     ```
     $ node --watch ./server.js
