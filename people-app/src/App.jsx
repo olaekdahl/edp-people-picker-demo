@@ -18,10 +18,13 @@ function App() {
   return (
     <>
       <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+        <nav className="navbar sticky-bottom bg-body-tertiary  bg-dark">
+          <div className="container-fluid">
+            <Link className='nav-link' to="/">Home</Link>
+          <Link className='nav-link' to="/login">Login</Link>
+          <Link className='nav-link' to="/register">Register</Link>
+          </div>
+          
         </nav>
       </header>
       <main>
