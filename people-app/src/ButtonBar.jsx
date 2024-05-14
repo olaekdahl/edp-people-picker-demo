@@ -8,7 +8,7 @@ export function ButtonBar({ reset, pickRandomPerson }) {
   const handlePickRandomPerson = () => {
     pickRandomPerson();
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 3000); // Confetti will disappear after 3 seconds
+    setTimeout(() => setShowConfetti(false), 6000); // Confetti will disappear after 3 seconds
   };
 
   return (
