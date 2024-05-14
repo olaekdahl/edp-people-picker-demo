@@ -34,7 +34,9 @@ function App() {
             <ButtonBar reset={reset} pickRandomPerson={pickRandomPerson} />
             {pickedPerson && <>
               <h1>The next person is ...</h1>
+              <div className="button-bar-container">
               <Person person={pickedPerson} />
+              </div>
             </>}
             <PeopleList people={unpickedPeople} title="Unpicked people" />
             <PeopleList people={pickedPeople} title="Already chosen" />
