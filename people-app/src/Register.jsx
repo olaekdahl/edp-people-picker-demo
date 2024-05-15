@@ -1,42 +1,89 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './Register.css';
 
-export const Register = () => {
-  const [state, setState] = useState({})
-  const [errorMessage, setErrorMessage] = useState()
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+export const Register = () => {
+  const [state, setState] = useState({
+    username: '',
+    email:'',
+    password: '',
+    verifyPassword: ''
+  })
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setState({ ...state, [name]: value });
+
+    if (name === 'password' || name === 'verifyPassword') {
+      validatePassword(value);
+    }
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(state);
+
+    if (!emailRegex.test(state.email)) {
+      setErrorMessage('Invalid email');
+      return;
+    }
+
+    if (state.password !== state.verifyPassword) {
+      setErrorMessage('Passwords do not match');
+      return;
+    }
+  };
+
+  const validatePassword = (password) => {
+    if (!/(?=.*\W).{4,}/.test(password)) {
+      setErrorMessage('Password is not secure enough');
+    } else {
+      setErrorMessage('');
+    }
+  };
   return (
     <section className='Register'>
       <h1>Register</h1>
-      <div>
-        <label>Desired username</label>
-        <input value={state.username} onChange={e => setState({ ...state, username: e.target.value })} />
-        <label>Password</label>
-        <input type="password" value={state.password1} onBlur={e => validate(e.target.value)} />
-        <button onClick={register}>Log in</button>
-
-      </div>
+      <form onSubmit={handleFormSubmit}>
+        <div className="box">
+          <label>Username</label>
+          <input
+            name="username"
+            value={state.username}
+            onChange={handleChange}
+          />
+          <label>Email</label>
+          <input 
+            name="email"
+            value={state.email}
+            onChange={handleChange}
+          />
+          <label>Password</label>
+          <input
+            name="password"
+            type="password"
+            value={state.password}
+            onChange={handleChange}
+          />
+          <label>Verify Password</label>
+          <input
+            name="verifyPassword"
+            type="password"
+            value={state.verifyPassword}
+            onChange={(e) => {
+              handleChange(e);
+              validatePassword(e.target.value);
+            }}
+          />
+          <button type="submit">Register</button>
+        </div>
+      </form>
       <dialog open={errorMessage}>
         <p>{errorMessage}</p>
         <button onClick={() => setErrorMessage(undefined)}>Okay</button>
       </dialog>
     </section>
   )
-
-  function register() {
-    throw "not yet implemented"
-  }
-
-  /**
-   * 
-   * @param {string} password 
-   * returns true if it is a secure password. False otherwise.
-   */
-  function validate(password) {
-    if (! /(?=.*\W).{4,}/.test(password)) {
-      setErrorMessage("That password isn't secure enough. Try another.")
-    } else {
-      setState({ ...state, password })
-    }
-  }
 }
