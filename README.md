@@ -31,7 +31,7 @@ This project lists the Travelers EDP program bootcamp cohort 1 and picks a rando
     ```
     - Where each element of the Array is a person Object with the shown key:value pairs.
     - Replace the values as needed, and add in as many person objects as you desire.
-    - Be sure to add a `png image` into the `images folder` with the same name as the value you'll choose for `Image_Name.png` in the `imageUrl` key.
+    - Be sure to add a `png image` into the `images folder` (inside the `people-app` folder) with the same name as the value you'll choose for `Image_Name.png` in the `imageUrl` key.
     
 3. **Insert the people data into the Database**
     - Use `MongoDB Compass' User Interface` or `mongoimport` from `MongoDB Command Line Database Tools`.
