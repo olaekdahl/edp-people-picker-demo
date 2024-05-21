@@ -9,8 +9,8 @@ export const Person = (props) => {
       <h3 className='card-title'>{person.first} {person.last}</h3>
       <table>
         <tbody>
-          <tr><td>Email</td><td>{person.email}</td></tr>
-          <tr><td>Age</td><td>{person.age}</td></tr>
+          <tr><td><strong>Email:</strong></td><td>{person.email}</td></tr>
+          <tr><td><strong>Age:</strong></td><td>{person.age}</td></tr>
         </tbody>
       </table>
     </div>
