@@ -20,9 +20,11 @@ app.use(cors());
 const port = process.env.PORT || 3000
 
 // If --logging flag is true, turn on logging
+let logging_is_on = false;
 for (let arg of process.argv)
-  if (arg === "--logging=on") app.use(logger);
-
+  if (arg === "--logging=on") logging_is_on = true;
+if (logging_is_on)
+  app.use(logger);
 
 //API route for MongoDb
 app.get('/api/allPeople', async (req, res) => {
@@ -40,8 +42,13 @@ app.get('/api/people/:id', async (req, res) => {
   res.send(people);
 });
 
-// Serve static files
-app.use('/images', express.static("./")); //Images from the images folder
+// Serve static images - Unix is case-sensitive so normalize to lowercase
+//app.use("/images", (req, res, next) => { res.send("Matched"); next() }); //Images from the images folder
+
+app.use("/images", (req, res, next) => {
+  req.url = req.url.toLowerCase()
+  express.static("images")(req, res, next);
+});
 app.use(express.static("people-app/dist"));  // The static React app from .people-app/dist
 
 app.listen(port, () => console.log(`Listening for requests on port ${port}`))
@@ -53,8 +60,12 @@ process.on('SIGINT', () => {
 });
 
 function logger(req, res, next) {
-  console.log("#".repeat(50))
-  console.log(req)
-  console.log("#".repeat(50))
+  let startTime = Date.now()
+  res.addListener('finish', () => {
+    console.log("#".repeat(50))
+    console.log(new Date())
+    console.log(`REQ: ${req.method} ${req.url} RES: ${res.statusCode} ${res.statusMessage} - ${Date.now() - startTime}ms`)
+    console.log("#".repeat(50))
+  });
   next();
 }
