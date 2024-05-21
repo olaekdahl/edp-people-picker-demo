@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/images": "http://localhost:3000/images",
+      "/images": "http://localhost:3000",
     }
   }
 })

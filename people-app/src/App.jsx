@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import { Login } from './Login';
 import { Register } from './Register';
+import './App.css';
 
 function App() {
   const [state, setState] = useState({ pickedPerson: undefined, pickedPeople: [], unpickedPeople: [] })
@@ -21,10 +22,10 @@ function App() {
         <nav className="navbar sticky-bottom bg-body-tertiary  bg-dark">
           <div className="container-fluid">
             <Link className='nav-link' to="/">Home</Link>
-          <Link className='nav-link' to="/login">Login</Link>
-          <Link className='nav-link' to="/register">Register</Link>
+            <Link className='nav-link' to="/login">Login</Link>
+            <Link className='nav-link' to="/register">Register</Link>
           </div>
-          
+
         </nav>
       </header>
       <main>
@@ -34,8 +35,8 @@ function App() {
             <ButtonBar reset={reset} pickRandomPerson={pickRandomPerson} />
             {pickedPerson && <>
               <h1>The next person is ...</h1>
-              <div className="button-bar-container">
-              <Person person={pickedPerson} />
+              <div id="pickedPerson">
+                <Person person={pickedPerson} />
               </div>
             </>}
             <PeopleList people={unpickedPeople} title="Unpicked people" />

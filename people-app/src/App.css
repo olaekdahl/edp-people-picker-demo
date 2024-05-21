@@ -1,0 +1,6 @@
+main {
+  & #pickedPerson {
+    margin: auto auto;
+    max-width: 300px;
+  }
+}

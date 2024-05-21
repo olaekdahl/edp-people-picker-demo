@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
+import './Person.css';
 
 export const Person = (props) => {
   const person = props.person;
-  const width = Math.floor(Math.random() * (202 - 198 + 1)) + 198;
-  const height = Math.floor(Math.random() * (202 - 198 + 1)) + 198;
   return <section className="Person card flex-grow-1">
-    <img src={`${person.imageUrl}`} className='card-img-top' height="250px" />
+    <img src={`${person.imageUrl}`} className='card-img-top' />
     <div className='card-body'>
       <h3 className='card-title'>{person.first} {person.last}</h3>
       <table>
